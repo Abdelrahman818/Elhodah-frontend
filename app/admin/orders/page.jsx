@@ -77,7 +77,7 @@ export default function OrdersAdmin() {
   const statusColor = (status) => {
     switch (status) {
       case "pending": return "text-yellow-600";
-      case "in delivery": return "text-blue-600";
+      case "in delivery": return "text-emerald-700";
       case "completed": return "text-green-600";
       case "cancelled": return "text-red-600";
       default: return "text-gray-600";
@@ -91,7 +91,7 @@ export default function OrdersAdmin() {
       <div className="bg-white shadow-md rounded-xl p-6 overflow-x-auto">
         {loading ? (
           <div className="flex justify-center p-10">
-            <Loader2 className="animate-spin text-blue-600" size={32} />
+            <Loader2 className="animate-spin text-emerald-700" size={32} />
           </div>
         ) : (
           <table className="min-w-full border border-gray-200">
@@ -130,7 +130,7 @@ export default function OrdersAdmin() {
                     <select
                       value={order.orderStatus}
                       onChange={(e) => handleStatusChange(order._id, e.target.value)}
-                      className={`border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white ${statusColor(order.orderStatus)}`}
+                      className={`border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white ${statusColor(order.orderStatus)}`}
                     >
                       {statusOptions.map((status) => (
                         <option key={status} value={status}>

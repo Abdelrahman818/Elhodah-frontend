@@ -50,20 +50,20 @@ export default function Footer() {
           <h3 className="text-xl font-semibold mb-4">روابط سريعة</h3>
           <ul className="space-y-2">
             <li>
-              <Link href="/" className="hover:text-blue-500 transition">الرئيسية</Link>
+              <Link href="/" className="hover:text-emerald-600 transition">الرئيسية</Link>
             </li>
             <li>
-              <Link href="/shop" className="hover:text-blue-500 transition">المتجر</Link>
+              <Link href="/shop" className="hover:text-emerald-600 transition">المتجر</Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-blue-500 transition">من نحن</Link>
+              <Link href="/about" className="hover:text-emerald-600 transition">من نحن</Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-blue-500 transition">تواصل معنا</Link>
+              <Link href="/contact" className="hover:text-emerald-600 transition">تواصل معنا</Link>
             </li>
             {isAdmin && (
               <li>
-                <Link href="/admin" className="hover:text-blue-500 transition">لوحة التحكم</Link>
+                <Link href="/admin" className="hover:text-emerald-600 transition">لوحة التحكم</Link>
               </li>
             )}
           </ul>
@@ -73,8 +73,8 @@ export default function Footer() {
         <div className="text-center md:text-left">
           <h3 className="text-xl font-semibold mb-4">تابعنا</h3>
           <div className="flex justify-center md:justify-start space-x-4">
-            <Link href="https://www.facebook.com/share/1FAUmrVNJh/?mibextid=wwXIfr" className="hover:text-blue-500 transition"><Facebook className="w-6 h-6" /></Link>
-            <Link href="https://www.instagram.com/el.hoda.eg?igsh=MXZ4dHc0aXVnZXl5bw%3D%3D&utm_source=qr" className="hover:text-blue-500 transition"><Instagram className="w-6 h-6" /></Link>
+            <Link href="https://www.facebook.com/share/1FAUmrVNJh/?mibextid=wwXIfr" className="hover:text-emerald-600 transition"><Facebook className="w-6 h-6" /></Link>
+            <Link href="https://www.instagram.com/el.hoda.eg?igsh=MXZ4dHc0aXVnZXl5bw%3D%3D&utm_source=qr" className="hover:text-emerald-600 transition"><Instagram className="w-6 h-6" /></Link>
           </div>
         </div>
 

@@ -29,7 +29,7 @@ export default function ContactAdmin() {
             {contacts.map((contact) => (
               <tr key={contact.id} className="border-b hover:bg-gray-50">
                 <td className="py-2 px-4 flex items-center gap-2">
-                  <Mail className="text-blue-600" /> {contact.name}
+                  <Mail className="text-emerald-700" /> {contact.name}
                 </td>
                 <td className="py-2 px-4">{contact.email}</td>
                 <td className="py-2 px-4">{contact.message}</td>

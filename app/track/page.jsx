@@ -33,12 +33,12 @@ export default function TrackOrderPage() {
             placeholder="أدخل رقم الطلب هنا"
             value={orderId}
             onChange={(e) => setOrderId(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           />
 
           <button
             onClick={handleTrack}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer"
+            className="w-full bg-emerald-700 text-white py-2 rounded-lg hover:bg-emerald-800 transition cursor-pointer"
           >
             تتبع الطلب
           </button>
@@ -85,17 +85,17 @@ function StatusItem({ icon, title, active }) {
   return (
     <div
       className={`flex flex-col items-center p-4 rounded-lg border
-      ${active ? "border-blue-600 bg-blue-50" : "border-gray-200"}`}
+      ${active ? "border-emerald-700 bg-emerald-50" : "border-gray-200"}`}
     >
       <div
         className={`w-12 h-12 flex items-center justify-center rounded-full mb-3
-        ${active ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-500"}`}
+        ${active ? "bg-emerald-700 text-white" : "bg-gray-200 text-gray-500"}`}
       >
         {icon}
       </div>
       <span
         className={`font-medium
-        ${active ? "text-blue-600" : "text-gray-500"}`}
+        ${active ? "text-emerald-700" : "text-gray-500"}`}
       >
         {title}
       </span>

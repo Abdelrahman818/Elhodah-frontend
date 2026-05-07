@@ -56,7 +56,7 @@ export default function ShopPage() {
       {/* Breadcrumb */}
       <div className="w-screen mx-auto px-4 pt-6 pb-6 bg-gray-900">
         <nav className="text-sm flex items-center gap-2 text-gray-500">
-          <button onClick={() => router.push("/")} className="hover:text-blue-600 transition">الرئيسية</button>
+          <button onClick={() => router.push("/")} className="hover:text-emerald-700 transition">الرئيسية</button>
           <span>/</span>
           <span className="text-white font-medium">المتجر</span>
         </nav>
@@ -82,7 +82,7 @@ export default function ShopPage() {
               }}
               className={`px-5 py-2 rounded-full border transition
                 ${activeCategory === cat
-                  ? "bg-blue-600 text-white border-blue-600"
+                  ? "bg-emerald-700 text-white border-emerald-700"
                   : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
                 }`}
             >
@@ -96,7 +96,7 @@ export default function ShopPage() {
       <section className="max-w-7xl mx-auto px-4 pb-20">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 text-gray-500 gap-4">
-            <Loader2 className="animate-spin text-blue-600" size={40} />
+            <Loader2 className="animate-spin text-emerald-700" size={40} />
             <span>جاري تحميل المنتجات...</span>
           </div>
         ) : (
@@ -120,7 +120,7 @@ export default function ShopPage() {
                   <h3 className="font-semibold text-gray-800 mb-1">
                     {product.title}
                   </h3>
-                  <p className="text-blue-600 font-bold">
+                  <p className="text-emerald-700 font-bold">
                     {product.price} جنيه
                   </p>
                 </div>

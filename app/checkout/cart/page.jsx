@@ -16,7 +16,7 @@ export default function CartPage() {
   if (cartLoading && cart.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="animate-spin text-blue-600" size={40} />
+        <Loader2 className="animate-spin text-emerald-700" size={40} />
       </div>
     );
   }
@@ -34,7 +34,7 @@ export default function CartPage() {
             <p className="text-xl mb-4">سلة المشتريات فارغة</p>
             <Link
               href="/shop"
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition inline-block"
+              className="bg-emerald-700 text-white px-8 py-3 rounded-lg hover:bg-emerald-800 transition inline-block"
             >
               ابدأ التسوق
             </Link>
@@ -72,7 +72,7 @@ export default function CartPage() {
                             <span className="bg-gray-100 px-2 py-0.5 rounded">المقاس: {item.size}</span>
                           )}
                         </div>
-                        <p className="text-blue-600 font-bold mt-2">
+                        <p className="text-emerald-700 font-bold mt-2">
                           {item.salePrice || item.price} جنيه
                         </p>
                       </div>
@@ -138,12 +138,12 @@ export default function CartPage() {
 
               <div className="border-t pt-4 flex justify-between font-bold text-xl mb-8">
                 <span>المجموع النهائي</span>
-                <span className="text-blue-600">{subtotal} جنيه</span>
+                <span className="text-emerald-700">{subtotal} جنيه</span>
               </div>
 
               <Link
                 href="/checkout/confirm"
-                className="block text-center bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200"
+                className="block text-center bg-emerald-700 text-white py-4 rounded-xl font-bold hover:bg-emerald-800 transition shadow-lg shadow-emerald-200"
               >
                 إتمام الطلب
               </Link>

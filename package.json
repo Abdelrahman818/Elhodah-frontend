@@ -1,20 +1,29 @@
 {
-  "name": "elhoda",
-  "version": "1.0.0",
-  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
-  "homepage": "https://github.com/El3ergany/Elhodah-frontend#readme",
-  "bugs": {
-    "url": "https://github.com/El3ergany/Elhodah-frontend/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/El3ergany/Elhodah-frontend.git"
-  },
-  "license": "ISC",
-  "author": "El3ergany",
-  "type": "commonjs",
-  "main": "app/index.js",
+  "name": "Elhoda",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.19",
+    "firebase": "^12.11.0",
+    "lottie": "^0.0.1",
+    "lottie-react": "^2.4.1",
+    "lucide-react": "^0.555.0",
+    "next": "^16.1.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-hot-toast": "^2.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.5",
+    "tailwindcss": "^4"
   }
 }

@@ -249,19 +249,19 @@ export default function ProductsAdmin() {
           <input
             type="text"
             placeholder="اسم المنتج"
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
             value={newProduct.title}
             onChange={(e) => setNewProduct({ ...newProduct, title: e.target.value })}
           />
           <input
             type="number"
             placeholder="السعر"
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
             value={newProduct.price}
             onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
           />
           <select
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
             value={newProduct.category}
             onChange={(e) => setNewProduct({ ...newProduct, category: e.target.value })}
           >
@@ -273,14 +273,14 @@ export default function ProductsAdmin() {
           <input
             type="text"
             placeholder="المقاسات (مفصولة بفاصلة)"
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
             value={newProduct.sizes}
             onChange={(e) => setNewProduct({ ...newProduct, sizes: e.target.value })}
           />
           <input
             type="text"
             placeholder="الألوان (مفصولة بفاصلة)"
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
             value={newProduct.colors}
             onChange={(e) => setNewProduct({ ...newProduct, colors: e.target.value })}
           />
@@ -297,7 +297,7 @@ export default function ProductsAdmin() {
         </div>
         <textarea
           placeholder="وصف المنتج"
-          className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           value={newProduct.desc}
           onChange={(e) => setNewProduct({ ...newProduct, desc: e.target.value })}
           rows="3"
@@ -345,7 +345,7 @@ export default function ProductsAdmin() {
 
         <button
           onClick={handleAdd}
-          className="flex items-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+          className="flex items-center gap-2 bg-emerald-700 text-white px-6 py-2 rounded-lg hover:bg-emerald-800 transition"
         >
           <Plus size={16} />
           إضافة المنتج
@@ -387,7 +387,7 @@ export default function ProductsAdmin() {
                       onChange={(e) =>
                         setEditingProduct({ ...editingProduct, title: e.target.value })
                       }
-                      className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                      className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-emerald-600 w-full"
                     />
                   ) : (
                     prod.title
@@ -401,7 +401,7 @@ export default function ProductsAdmin() {
                       onChange={(e) =>
                         setEditingProduct({ ...editingProduct, price: e.target.value })
                       }
-                      className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                      className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-emerald-600 w-full"
                     />
                   ) : (
                     prod.price + " جنيه"
@@ -414,7 +414,7 @@ export default function ProductsAdmin() {
                       onChange={(e) =>
                         setEditingProduct({ ...editingProduct, category: e.target.value })
                       }
-                      className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                      className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-emerald-600 w-full"
                     >
                       <option value="">اختر التصنيف</option>
                       {categories.map((cat) => (

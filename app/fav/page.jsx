@@ -33,7 +33,7 @@ export default function FavPage() {
           <h1 className="text-2xl font-bold mb-4">يجب تسجيل الدخول</h1>
           <Link
             href="/auth/login"
-            className="text-blue-600 hover:underline"
+            className="text-emerald-700 hover:underline"
           >
             تسجيل الدخول
           </Link>
@@ -59,7 +59,7 @@ export default function FavPage() {
             <p className="text-xl mb-4">لا توجد منتجات في المفضلة</p>
             <Link
               href="/shop"
-              className="text-blue-600 hover:underline"
+              className="text-emerald-700 hover:underline"
             >
               ابدأ التسوق
             </Link>
@@ -93,7 +93,7 @@ export default function FavPage() {
                       <h3 className="font-semibold text-gray-800 mb-1">
                         {product.title || "Product"}
                       </h3>
-                      <p className="text-blue-600 font-bold">
+                      <p className="text-emerald-700 font-bold">
                         {product.salePrice || product.price || 0} جنيه
                       </p>
                     </div>

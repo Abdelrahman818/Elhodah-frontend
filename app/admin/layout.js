@@ -85,7 +85,7 @@ export default function AdminLayout({ children }) {
     return (
       <div className="flex h-screen bg-gray-100 items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-700 mx-auto mb-4"></div>
           <p className="text-gray-600">جاري التحميل...</p>
         </div>
       </div>
@@ -106,7 +106,7 @@ export default function AdminLayout({ children }) {
           md:translate-x-0 md:w-64 w-64`}
       >
         <div className="flex items-center justify-center h-20 border-b">
-          <h1 className="text-xl font-bold text-blue-600">El-Hodah Admin</h1>
+          <h1 className="text-xl font-bold text-emerald-700">El-Hodah Admin</h1>
         </div>
 
         <nav className="mt-4">
@@ -114,7 +114,7 @@ export default function AdminLayout({ children }) {
             <Link
               key={item.name}
               href={item.href}
-              className="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+              className="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 transition"
             >
               {item.icon}
               <span>{item.name}</span>
@@ -125,7 +125,7 @@ export default function AdminLayout({ children }) {
 
       {/* Mobile Toggle Button */}
       <button
-        className="md:hidden fixed top-4 left-4 z-50 p-2 bg-blue-600 text-white rounded-md shadow-md"
+        className="md:hidden fixed top-4 left-4 z-50 p-2 bg-emerald-700 text-white rounded-md shadow-md"
         onClick={() => setSidebarOpen(!sidebarOpen)}
       >
         ☰

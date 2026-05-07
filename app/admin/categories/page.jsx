@@ -184,7 +184,7 @@ export default function CategoriesAdmin() {
             <input
               type="text"
               placeholder="اسم التصنيف"
-              className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
               value={newCategory}
               onChange={(e) => setNewCategory(e.target.value)}
             />
@@ -206,7 +206,7 @@ export default function CategoriesAdmin() {
             </div>
             <button
               onClick={handleAdd}
-              className="flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+              className="flex items-center justify-center gap-2 bg-emerald-700 text-white px-6 py-2 rounded-lg hover:bg-emerald-800 transition"
             >
               <Plus size={16} />
               إضافة
@@ -279,7 +279,7 @@ export default function CategoriesAdmin() {
                       type="text"
                       value={editingName}
                       onChange={(e) => setEditingName(e.target.value)}
-                      className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                      className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-emerald-600 w-full"
                     />
                   ) : (
                     cat.name

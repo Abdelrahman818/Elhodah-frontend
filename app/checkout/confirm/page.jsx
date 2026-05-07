@@ -10,7 +10,7 @@ import { Loader2 } from "lucide-react";
 
 export default function CheckoutPage() {
   const { cart, clearCart } = useMain();
-  const { user } = useUser();
+  const { user, isLoggedIn, loading } = useUser();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
@@ -27,10 +27,13 @@ export default function CheckoutPage() {
   );
 
   useEffect(() => {
-    if (cart.length === 0) {
+    if (!loading && !isLoggedIn) {
+      toast.error("يرجى تسجيل الدخول أولاً");
+      router.push("/auth/login");
+    } else if (cart.length === 0) {
       router.push("/shop");
     }
-  }, [cart, router]);
+  }, [cart, isLoggedIn, loading, router]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -171,7 +174,7 @@ export default function CheckoutPage() {
             <button
               type="submit"
               disabled={isSubmitting || cart.length === 0}
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full bg-emerald-700 text-white py-3 rounded-lg hover:bg-emerald-800 transition flex items-center justify-center gap-2 disabled:opacity-50"
             >
               {isSubmitting ? (
                 <Loader2 className="animate-spin" size={20} />
@@ -194,7 +197,7 @@ function Input({ label, ...props }) {
       </label>
       <input
         {...props}
-        className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
         required={label !== "ملاحظات إضافية (اختياري)"}
       />
     </div>

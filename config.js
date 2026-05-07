@@ -1,8 +1,9 @@
-export const BASE_API_URL = "http://localhost:8080";
+export const BASE_API_URL = process.env.NEXT_PUBLIC_BASE_API_URL || "http://localhost:8080";
 
 export const endPoints = {
   login: `${BASE_API_URL}/api/auth/login`,
   signup: `${BASE_API_URL}/api/auth/signup`,
+  sync: `${BASE_API_URL}/api/auth/sync`,
   logout: `${BASE_API_URL}/api/auth/logout`,
   verifyUser: `${BASE_API_URL}/api/auth/verifyUser`,
   activateUser: `${BASE_API_URL}/api/auth/verifyUser`,

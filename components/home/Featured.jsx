@@ -53,7 +53,7 @@ export default function Featured() {
               <h3 className="text-gray-800 font-semibold text-lg sm:text-xl">
                 {product.title}
               </h3>
-              <p className="text-blue-600 font-bold text-md sm:text-lg">
+              <p className="text-emerald-700 font-bold text-md sm:text-lg">
                 {product.price} جنيه
               </p>
             </div>

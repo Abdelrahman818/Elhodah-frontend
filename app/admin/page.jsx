@@ -32,7 +32,7 @@ export default function AdminDashboard() {
             name: "Orders",
             value: data.stats.orders,
             icon: <ShoppingCart className="text-white" />,
-            bg: "bg-blue-600",
+            bg: "bg-emerald-700",
           },
           {
             name: "Products",
@@ -124,7 +124,7 @@ export default function AdminDashboard() {
                       : order.orderStatus === "in delivery"
                         ? "text-yellow-600"
                         : order.orderStatus === "pending"
-                          ? "text-blue-600"
+                          ? "text-emerald-700"
                           : "text-red-600"
                       }`}
                   >

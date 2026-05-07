@@ -24,17 +24,17 @@ export default function ContactPage() {
 
           <div className="space-y-4 text-gray-600">
             <div className="flex items-center gap-3">
-              <Phone className="text-blue-600" />
+              <Phone className="text-emerald-700" />
               <span>+20 1XX XXX XXXX</span>
             </div>
 
             <div className="flex items-center gap-3">
-              <Mail className="text-blue-600" />
-              <span>support@threadix.com</span>
+              <Mail className="text-emerald-700" />
+              <span>support@elhoda.com</span>
             </div>
 
             <div className="flex items-center gap-3">
-              <MapPin className="text-blue-600" />
+              <MapPin className="text-emerald-700" />
               <span>القاهرة، مصر</span>
             </div>
           </div>
@@ -58,7 +58,7 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+              className="w-full bg-emerald-700 text-white py-3 rounded-lg hover:bg-emerald-800 transition"
             >
               إرسال الرسالة
             </button>
@@ -78,7 +78,7 @@ function Input({ label, type = "text" }) {
       </label>
       <input
         type={type}
-        className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
         required
       />
     </div>
@@ -93,7 +93,7 @@ function Textarea({ label }) {
       </label>
       <textarea
         rows="4"
-        className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
         required
       ></textarea>
     </div>

@@ -2,6 +2,8 @@
 
 import { endPoints } from "@/config";
 import { createContext, useContext, useState, useEffect } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 const UserContext = createContext(undefined);
 
@@ -9,13 +11,16 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [firebaseToken, setFirebaseToken] = useState(null);
 
-  const getUserData = async () => {
+  const getUserData = async (token) => {
     try {
       setLoading(true);
       setError(null);
       const res = await fetch(endPoints.getCurrentUser, {
-        credentials: 'include',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
 
       const json = await res.json();
@@ -33,31 +38,46 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        try {
+          const token = await firebaseUser.getIdToken();
+          setFirebaseToken(token);
+          await getUserData(token);
+        } catch (err) {
+          console.error("Token error:", err);
+          setUser(null);
+          setFirebaseToken(null);
+          setLoading(false);
+        }
+      } else {
+        setUser(null);
+        setFirebaseToken(null);
+        setLoading(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   const logout = async () => {
     try {
-      const res = await fetch(endPoints.logout, {
-        method: 'POST',
-        credentials: 'include',
-      });
-      const json = await res.json();
-      if (json.successful) {
-        setUser(null);
-      }
+      await signOut(auth);
+      // Optional: Inform backend to clear any remaining cookies if needed
+      await fetch(endPoints.logout, { method: 'POST' });
     } catch (error) {
       console.error("Logout error:", error);
     }
   };
-
-  useEffect(() => {
-    getUserData();
-  }, []);
 
   const value = {
     user,
     loading,
     error,
     isLoggedIn: !!user,
-    refreshUser: getUserData,
+    firebaseToken,
+    refreshUser: () => firebaseToken && getUserData(firebaseToken),
     logout,
   };
 

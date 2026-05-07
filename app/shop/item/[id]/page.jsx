@@ -29,6 +29,7 @@ export default function ItemPage() {
   const handleAddToCart = async () => {
     if (!isLoggedIn) {
       toast.error("يرجى تسجيل الدخول أولاً");
+      router.push("/auth/login");
       return;
     }
 
@@ -62,6 +63,7 @@ export default function ItemPage() {
   const handleBuyNow = async () => {
     if (!isLoggedIn) {
       toast.error("يرجى تسجيل الدخول أولاً");
+      router.push("/auth/login");
       return;
     }
 
@@ -130,7 +132,8 @@ export default function ItemPage() {
 
   const handleToggleFav = async () => {
     if (!isLoggedIn) {
-      // Optionally redirect to login or show a message
+      toast.error("يرجى تسجيل الدخول أولاً للمتابعة");
+      router.push("/auth/login");
       return;
     }
 
@@ -154,7 +157,7 @@ export default function ItemPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-gray-500 gap-4">
-        <Loader2 className="animate-spin text-blue-600" size={40} />
+        <Loader2 className="animate-spin text-emerald-700" size={40} />
         <span>جاري تحميل المنتج...</span>
       </div>
     );
@@ -173,9 +176,9 @@ export default function ItemPage() {
       {/* Breadcrumb */}
       <div className="max-w-6xl mx-auto px-4 mb-6">
         <nav className="text-sm flex items-center gap-2 text-gray-500">
-          <button onClick={() => router.push("/")} className="hover:text-blue-600 transition">الرئيسية</button>
+          <button onClick={() => router.push("/")} className="hover:text-emerald-700 transition">الرئيسية</button>
           <span>/</span>
-          <button onClick={() => router.push("/shop")} className="hover:text-blue-600 transition">المتجر</button>
+          <button onClick={() => router.push("/shop")} className="hover:text-emerald-700 transition">المتجر</button>
           <span>/</span>
           <span className="text-gray-900 font-medium truncate max-w-[200px]">{product.title}</span>
         </nav>
@@ -217,7 +220,7 @@ export default function ItemPage() {
                     key={color}
                     onClick={() => setSelectedColor(color)}
                     className={`px-4 py-2 rounded-lg border transition ${selectedColor === color
-                      ? "border-blue-600 bg-blue-50 text-blue-600"
+                      ? "border-emerald-700 bg-emerald-50 text-emerald-700"
                       : "border-gray-200 hover:border-gray-300 text-gray-600"
                       }`}
                   >
@@ -238,7 +241,7 @@ export default function ItemPage() {
                     key={size}
                     onClick={() => setSelectedSize(size)}
                     className={`min-w-[50px] h-10 flex items-center justify-center rounded-lg border transition ${selectedSize === size
-                      ? "border-blue-600 bg-blue-50 text-blue-600"
+                      ? "border-emerald-700 bg-emerald-50 text-emerald-700"
                       : "border-gray-200 hover:border-gray-300 text-gray-600"
                       }`}
                   >
@@ -249,7 +252,7 @@ export default function ItemPage() {
             </div>
           )}
 
-          <div className="text-2xl font-bold text-blue-600 mb-6">
+          <div className="text-2xl font-bold text-emerald-700 mb-6">
             {product.price} جنيه
           </div>
 
@@ -258,7 +261,7 @@ export default function ItemPage() {
             <button
               onClick={handleAddToCart}
               disabled={isCartLoading || isBuyNowLoading}
-              className="flex-1 flex items-center justify-center gap-2 border-2 border-blue-600 text-blue-600 font-semibold py-3 rounded-lg hover:bg-blue-50 transition disabled:opacity-50"
+              className="flex-1 flex items-center justify-center gap-2 border-2 border-emerald-700 text-emerald-700 font-semibold py-3 rounded-lg hover:bg-emerald-50 transition disabled:opacity-50"
               title={(!selectedColor && product.colors?.length > 0) || (!selectedSize && product.size?.length > 0) ? "يرجى اختيار المقاس واللون" : ""}
             >
               {isCartLoading ? (
@@ -274,7 +277,7 @@ export default function ItemPage() {
             <button
               onClick={handleBuyNow}
               disabled={isCartLoading || isBuyNowLoading}
-              className="flex-1 flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
+              className="flex-1 flex items-center justify-center gap-2 bg-emerald-700 text-white font-semibold py-3 rounded-lg hover:bg-emerald-800 transition disabled:opacity-50"
               title={(!selectedColor && product.colors?.length > 0) || (!selectedSize && product.size?.length > 0) ? "يرجى اختيار المقاس واللون" : ""}
             >
               {isBuyNowLoading ? (

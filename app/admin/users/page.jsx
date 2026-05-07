@@ -92,7 +92,7 @@ export default function UsersAdmin() {
       <div className="bg-white shadow-md rounded-xl p-6 overflow-x-auto">
         {loading ? (
           <div className="flex justify-center p-10">
-            <Loader2 className="animate-spin text-blue-600" size={32} />
+            <Loader2 className="animate-spin text-emerald-700" size={32} />
           </div>
         ) : (
           <table className="min-w-full border border-gray-200">
@@ -108,7 +108,7 @@ export default function UsersAdmin() {
               {users.map((user) => (
                 <tr key={user._id} className="border-b hover:bg-gray-50">
                   <td className="py-2 px-4 flex items-center gap-2">
-                    <User className="text-blue-600" />
+                    <User className="text-emerald-700" />
                     {editingId === user._id ? (
                       <input
                         type="text"
@@ -116,7 +116,7 @@ export default function UsersAdmin() {
                         onChange={(e) =>
                           setEditingUser({ ...editingUser, name: e.target.value })
                         }
-                        className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                        className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-emerald-600 w-full"
                       />
                     ) : (
                       user.name
@@ -130,7 +130,7 @@ export default function UsersAdmin() {
                         onChange={(e) =>
                           setEditingUser({ ...editingUser, email: e.target.value })
                         }
-                        className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                        className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-emerald-600 w-full"
                       />
                     ) : (
                       user.email
@@ -143,7 +143,7 @@ export default function UsersAdmin() {
                         onChange={(e) =>
                           setEditingUser({ ...editingUser, isAdmin: e.target.value === "Admin" })
                         }
-                        className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                        className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-emerald-600 w-full"
                       >
                         <option value="User">User</option>
                         <option value="Admin">Admin</option>

@@ -6,8 +6,11 @@ import { useState, useEffect } from "react";
 import { ShoppingBag, Menu, User, LogOut, Heart } from "lucide-react";
 import { useMain } from "@/context/MainContext";
 import { useUser } from "@/context/UserContext";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 export default function Header({ bg = "" }) {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const { favs, getUserFavs, cart, getUserCart } = useMain();
   const { user, isLoggedIn, logout } = useUser();
@@ -64,10 +67,20 @@ export default function Header({ bg = "" }) {
             </Link>
           )}
 
-          <Link href="/checkout/cart" className="icon-btn relative">
+          <Link
+            href="/checkout/cart"
+            className="icon-btn relative"
+            onClick={(e) => {
+              if (!isLoggedIn) {
+                e.preventDefault();
+                toast.error("يرجى تسجيل الدخول أولاً للمتابعة إلى سلة المشتريات");
+                router.push("/auth/login");
+              }
+            }}
+          >
             <ShoppingBag size={22} />
             {cart.length > 0 && (
-              <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-emerald-700 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
                 {cart.length}
               </span>
             )}
