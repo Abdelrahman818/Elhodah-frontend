@@ -3,12 +3,19 @@
 import { endPoints, BASE_API_URL } from "@/config";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { fetchDemoCategories, getDemoImageSrc, isDemoMode } from "@/lib/demoMode";
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
 
   const fetchCategories = async () => {
     try {
+      if (isDemoMode) {
+        const demoCategories = await fetchDemoCategories();
+        setCategories(demoCategories);
+        return;
+      }
+
       const res = await fetch(endPoints.categories());
       const json = await res.json();
       setCategories(json.data);
@@ -31,11 +38,11 @@ export default function Categories() {
         {categories.length > 0 && categories?.map((cat) => (
           <Link
             key={cat._id}
-            href={`/shop/${cat.name}`}
+            href={`/shop/${encodeURIComponent(cat.name)}`}
             className="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer"
           >
             <img
-              src={`${BASE_API_URL}${cat.imgUrl}`}
+              src={isDemoMode ? getDemoImageSrc(cat.imgUrl) : `${BASE_API_URL}${cat.imgUrl}`}
               alt={cat.name}
               className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               onError={(e) => { e.target.src = "https://placehold.co/400x300?text=" + cat.name }}

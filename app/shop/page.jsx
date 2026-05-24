@@ -4,6 +4,12 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { endPoints, BASE_API_URL } from "@/config";
 import { Loader2 } from "lucide-react";
+import {
+  fetchDemoCategories,
+  fetchDemoProducts,
+  getDemoImageSrc,
+  isDemoMode,
+} from "@/lib/demoMode";
 
 export default function ShopPage() {
   const [categories, setCategories] = useState(["All"]);
@@ -15,6 +21,20 @@ export default function ShopPage() {
   const fetchData = async () => {
     try {
       setLoading(true);
+      if (isDemoMode) {
+        const [demoCategories, demoProducts] = await Promise.all([
+          fetchDemoCategories(),
+          fetchDemoProducts(),
+        ]);
+        setCategories(["All", ...demoCategories.map((category) => category.name)]);
+        setProducts(
+          activeCategory === "All"
+            ? demoProducts
+            : demoProducts.filter((product) => product.category === activeCategory)
+        );
+        return;
+      }
+
       // Fetch all categories for the filter
       const catRes = await fetch(endPoints.categories());
       const catJson = await catRes.json();
@@ -99,7 +119,7 @@ export default function ShopPage() {
                 className="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer group hover:shadow-lg transition"
               >
                 <img
-                  src={product.images && product.images.length > 0 ? `${BASE_API_URL}${product.images[0]}` : "https://placehold.co/400x300?text=" + product.title}
+                  src={product.images && product.images.length > 0 ? (isDemoMode ? getDemoImageSrc(product.images) : `${BASE_API_URL}${product.images[0]}`) : "https://placehold.co/400x300?text=" + product.title}
                   alt={product.title}
                   className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                   onError={(e) => { e.target.src = "https://placehold.co/400x300?text=" + product.title }}

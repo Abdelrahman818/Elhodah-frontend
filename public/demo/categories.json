@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "_id": "cat-bed-sheets",
+      "name": "Bed Sheets",
+      "imgUrl": "https://placehold.co/600x420/065f46/ffffff?text=Bed+Sheets",
+      "isActive": true
+    },
+    {
+      "_id": "cat-comforters",
+      "name": "Comforters",
+      "imgUrl": "https://placehold.co/600x420/1f2937/ffffff?text=Comforters",
+      "isActive": true
+    },
+    {
+      "_id": "cat-towels",
+      "name": "Towels",
+      "imgUrl": "https://placehold.co/600x420/be123c/ffffff?text=Towels",
+      "isActive": true
+    },
+    {
+      "_id": "cat-baby",
+      "name": "Baby Bedding",
+      "imgUrl": "https://placehold.co/600x420/7c3aed/ffffff?text=Baby+Bedding",
+      "isActive": true
+    }
+  ]
+}

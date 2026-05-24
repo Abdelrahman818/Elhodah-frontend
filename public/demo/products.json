@@ -1,0 +1,82 @@
+{
+  "data": [
+    {
+      "_id": "demo-prod-001",
+      "title": "Cotton Floral Sheet Set",
+      "desc": "Soft printed cotton sheets with pillow covers for everyday comfort.",
+      "category": "Bed Sheets",
+      "price": 620,
+      "salePrice": 560,
+      "colors": ["Green", "White"],
+      "size": ["Queen", "King"],
+      "stock": true,
+      "isFeatured": true,
+      "images": ["https://placehold.co/700x700/065f46/ffffff?text=Floral+Sheets"]
+    },
+    {
+      "_id": "demo-prod-002",
+      "title": "Hotel Stripe Duvet Cover",
+      "desc": "Elegant striped duvet cover with a calm hotel-inspired finish.",
+      "category": "Comforters",
+      "price": 950,
+      "salePrice": 875,
+      "colors": ["Gray", "Beige"],
+      "size": ["Queen", "King"],
+      "stock": true,
+      "isFeatured": true,
+      "images": ["https://placehold.co/700x700/1f2937/ffffff?text=Duvet+Cover"]
+    },
+    {
+      "_id": "demo-prod-003",
+      "title": "Premium Bath Towel Pack",
+      "desc": "A plush towel pack with absorbent cotton and fresh colors.",
+      "category": "Towels",
+      "price": 420,
+      "salePrice": 390,
+      "colors": ["Rose", "Navy", "White"],
+      "size": ["Large"],
+      "stock": true,
+      "isFeatured": true,
+      "images": ["https://placehold.co/700x700/be123c/ffffff?text=Towel+Pack"]
+    },
+    {
+      "_id": "demo-prod-004",
+      "title": "Baby Cloud Bedding Set",
+      "desc": "Gentle bedding set for babies with breathable fabric and soft colors.",
+      "category": "Baby Bedding",
+      "price": 680,
+      "salePrice": 640,
+      "colors": ["Sky", "Cream"],
+      "size": ["Crib"],
+      "stock": true,
+      "isFeatured": true,
+      "images": ["https://placehold.co/700x700/7c3aed/ffffff?text=Baby+Bedding"]
+    },
+    {
+      "_id": "demo-prod-005",
+      "title": "Solid Color Sheet Set",
+      "desc": "Minimal solid color sheets made for easy matching and daily use.",
+      "category": "Bed Sheets",
+      "price": 520,
+      "salePrice": 520,
+      "colors": ["Blue", "Cream", "Olive"],
+      "size": ["Single", "Queen"],
+      "stock": true,
+      "isFeatured": false,
+      "images": ["https://placehold.co/700x700/2563eb/ffffff?text=Solid+Sheets"]
+    },
+    {
+      "_id": "demo-prod-006",
+      "title": "Winter Comforter",
+      "desc": "Warm comforter designed for cold nights and a cozy bedroom look.",
+      "category": "Comforters",
+      "price": 1200,
+      "salePrice": 1090,
+      "colors": ["Charcoal", "Ivory"],
+      "size": ["King"],
+      "stock": true,
+      "isFeatured": false,
+      "images": ["https://placehold.co/700x700/374151/ffffff?text=Winter+Comforter"]
+    }
+  ]
+}

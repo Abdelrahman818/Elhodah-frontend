@@ -1,0 +1,85 @@
+{
+  "data": [
+    {
+      "_id": "demo-order-4012",
+      "orderId": 4012,
+      "name": "Demo Customer",
+      "email": "demo@elhoda.test",
+      "phone": "01012345678",
+      "address": "12 El Hoda Street, Cairo",
+      "orderStatus": "pending",
+      "paymentMethod": "Cash on Delivery",
+      "paymentStatus": "unpaid",
+      "totalPrice": 950,
+      "createdAt": "2026-05-22T11:00:00.000Z",
+      "products": [
+        {
+          "product": {
+            "_id": "demo-prod-001",
+            "title": "Cotton Floral Sheet Set"
+          },
+          "quantity": 1,
+          "color": "Green",
+          "size": "Queen"
+        }
+      ]
+    },
+    {
+      "_id": "demo-order-4013",
+      "orderId": 4013,
+      "name": "Demo Customer",
+      "email": "demo@elhoda.test",
+      "phone": "01012345678",
+      "address": "12 El Hoda Street, Cairo",
+      "orderStatus": "in delivery",
+      "paymentMethod": "Cash on Delivery",
+      "paymentStatus": "unpaid",
+      "totalPrice": 1265,
+      "createdAt": "2026-05-19T15:30:00.000Z",
+      "products": [
+        {
+          "product": {
+            "_id": "demo-prod-002",
+            "title": "Hotel Stripe Duvet Cover"
+          },
+          "quantity": 1,
+          "color": "Gray",
+          "size": "King"
+        },
+        {
+          "product": {
+            "_id": "demo-prod-003",
+            "title": "Premium Bath Towel Pack"
+          },
+          "quantity": 1,
+          "color": "White",
+          "size": "Large"
+        }
+      ]
+    },
+    {
+      "_id": "demo-order-4014",
+      "orderId": 4014,
+      "name": "Demo Customer",
+      "email": "demo@elhoda.test",
+      "phone": "01012345678",
+      "address": "12 El Hoda Street, Cairo",
+      "orderStatus": "completed",
+      "paymentMethod": "Cash on Delivery",
+      "paymentStatus": "paid",
+      "totalPrice": 640,
+      "createdAt": "2026-05-12T09:15:00.000Z",
+      "products": [
+        {
+          "product": {
+            "_id": "demo-prod-004",
+            "title": "Baby Cloud Bedding Set"
+          },
+          "quantity": 1,
+          "color": "Cream",
+          "size": "Crib"
+        }
+      ]
+    }
+  ]
+}

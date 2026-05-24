@@ -7,6 +7,7 @@ import { useMain } from "@/context/MainContext";
 import { useUser } from "@/context/UserContext";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
+import { isDemoMode } from "@/lib/demoMode";
 
 export default function CheckoutPage() {
   const { cart, clearCart } = useMain();
@@ -34,6 +35,18 @@ export default function CheckoutPage() {
       router.push("/shop");
     }
   }, [cart, isLoggedIn, loading, router]);
+
+  useEffect(() => {
+    if (user) {
+      setForm((prev) => ({
+        ...prev,
+        name: prev.name || user.name || "",
+        phone: prev.phone || user.phone || "",
+        address: prev.address || user.address || "",
+        city: prev.city || user.city || "",
+      }));
+    }
+  }, [user]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -64,6 +77,13 @@ export default function CheckoutPage() {
         paymentStatus: 'unpaid',
         orderStatus: 'pending',
       };
+
+      if (isDemoMode) {
+        toast.success("Demo order placed successfully");
+        await clearCart();
+        router.push("/");
+        return;
+      }
 
       const res = await fetch(endPoints.orders, {
         method: "POST",

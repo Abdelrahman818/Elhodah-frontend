@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { endPoints, BASE_API_URL } from "@/config";
+import { fetchDemoFeaturedProducts, getDemoImageSrc, isDemoMode } from "@/lib/demoMode";
 
 
 export default function Featured() {
@@ -11,6 +12,12 @@ export default function Featured() {
 
   const getFeaturedProducts = async () => {
     try {
+      if (isDemoMode) {
+        const demoProducts = await fetchDemoFeaturedProducts();
+        setProducts(demoProducts);
+        return;
+      }
+
       const res = await fetch(endPoints.getFeatured);
       const json = await res.json();
       setProducts(json.data);
@@ -41,7 +48,7 @@ export default function Featured() {
             {/* صورة المنتج */}
             <div className="relative">
               <img
-                src={product.images && product.images.length > 0 ? `${BASE_API_URL}${product.images[0]}` : "https://placehold.co/400x300?text=" + product.title}
+                src={product.images && product.images.length > 0 ? (isDemoMode ? getDemoImageSrc(product.images) : `${BASE_API_URL}${product.images[0]}`) : "https://placehold.co/400x300?text=" + product.title}
                 alt={product.title}
                 className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 onError={(e) => { e.target.src = "https://placehold.co/400x300?text=" + product.title }}

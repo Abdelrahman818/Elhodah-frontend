@@ -7,9 +7,12 @@ import { endPoints } from "@/config";
 import { useRouter } from "next/navigation";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../../../firebaseConfig";
+import { fetchDemoUsers, isDemoMode, loginDemoUser } from "@/lib/demoMode";
+import { useUser } from "@/context/UserContext";
 
 export default function LoginPage() {
   const router = useRouter();
+  const { refreshUser } = useUser();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -45,6 +48,22 @@ export default function LoginPage() {
 
     setLoading(true);
     try {
+      if (isDemoMode) {
+        const users = await fetchDemoUsers();
+        const demoUser = users.find((user) => user.email === form.email);
+
+        if (!demoUser || demoUser.password !== form.password) {
+          throw new Error("Invalid demo credentials");
+        }
+
+        loginDemoUser(demoUser);
+        await refreshUser();
+        toast.success("Demo login successful");
+        router.push("/");
+        router.refresh();
+        return;
+      }
+
       const userCredential = await signInWithEmailAndPassword(auth, form.email, form.password);
       const token = await userCredential.user.getIdToken();
       await syncWithBackend(token);
@@ -63,6 +82,17 @@ export default function LoginPage() {
   const handleGoogleLogin = async () => {
     setLoading(true);
     try {
+      if (isDemoMode) {
+        const users = await fetchDemoUsers();
+        const demoUser = users[0];
+        loginDemoUser(demoUser);
+        await refreshUser();
+        toast.success("Demo login successful");
+        router.push("/");
+        router.refresh();
+        return;
+      }
+
       const provider = new GoogleAuthProvider();
         
       const userCredential = await signInWithPopup(auth, provider);
@@ -97,6 +127,7 @@ export default function LoginPage() {
             type="email"
             name="email"
             value={form.email}
+            placeholder={isDemoMode ? "demo@elhoda.test" : ""}
             onChange={handleChange}
           />
 
@@ -105,6 +136,7 @@ export default function LoginPage() {
             type="password"
             name="password"
             value={form.password}
+            placeholder={isDemoMode ? "demo" : ""}
             onChange={handleChange}
           />
 

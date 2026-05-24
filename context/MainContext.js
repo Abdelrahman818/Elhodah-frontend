@@ -2,6 +2,18 @@
 
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { endPoints } from "@/config";
+import {
+  addDemoCartItem,
+  addDemoFav,
+  clearDemoCart,
+  fetchDemoProducts,
+  getDemoCart,
+  getDemoFavs,
+  isDemoMode,
+  removeDemoCartItem,
+  removeDemoFav,
+  updateDemoCartItem,
+} from "@/lib/demoMode";
 
 const MainContext = createContext(undefined);
 
@@ -19,6 +31,17 @@ export const MainProvider = ({ children }) => {
   const getProducts = async () => {
     try {
       setValue((prev) => ({ ...prev, loading: true }));
+      if (isDemoMode) {
+        const products = await fetchDemoProducts();
+        setValue((prev) => ({
+          ...prev,
+          products,
+          loading: false,
+          error: null,
+        }));
+        return;
+      }
+
       const res = await fetch(endPoints.products);
 
       if (!res.ok) {
@@ -45,6 +68,16 @@ export const MainProvider = ({ children }) => {
   const getUserFavs = useCallback(async () => {
     try {
       setValue((prev) => ({ ...prev, favLoading: true }));
+      if (isDemoMode) {
+        const favs = await getDemoFavs();
+        setValue((prev) => ({
+          ...prev,
+          favs,
+          favLoading: false,
+        }));
+        return;
+      }
+
       const res = await fetch(`${endPoints.fav}/user`, {
         credentials: 'include',
       });
@@ -70,6 +103,12 @@ export const MainProvider = ({ children }) => {
 
   const addToFav = async (productId) => {
     try {
+      if (isDemoMode) {
+        const favs = await addDemoFav(productId);
+        setValue((prev) => ({ ...prev, favs }));
+        return { successful: true };
+      }
+
       const res = await fetch(`${endPoints.fav}/add`, {
         method: 'POST',
         headers: {
@@ -97,6 +136,12 @@ export const MainProvider = ({ children }) => {
 
   const removeFromFav = async (productId) => {
     try {
+      if (isDemoMode) {
+        const favs = await removeDemoFav(productId);
+        setValue((prev) => ({ ...prev, favs }));
+        return { successful: true };
+      }
+
       const res = await fetch(`${endPoints.fav}/remove/${productId}`, {
         method: 'DELETE',
         credentials: 'include',
@@ -125,6 +170,15 @@ export const MainProvider = ({ children }) => {
   // --- Cart Functions ---
 
   const getUserCart = useCallback(async () => {
+    if (isDemoMode) {
+      setValue((prev) => ({
+        ...prev,
+        cart: getDemoCart(),
+        cartLoading: false,
+      }));
+      return;
+    }
+
     try {
       setValue((prev) => ({ ...prev, cartLoading: true }));
       const res = await fetch(endPoints.cart(), {
@@ -147,6 +201,12 @@ export const MainProvider = ({ children }) => {
 
   const addToCart = async (productId, quantity, color, size) => {
     try {
+      if (isDemoMode) {
+        const cart = await addDemoCartItem(productId, quantity, color, size);
+        setValue((prev) => ({ ...prev, cart }));
+        return { successful: true };
+      }
+
       const res = await fetch(endPoints.cart(), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -167,6 +227,12 @@ export const MainProvider = ({ children }) => {
 
   const updateCartQty = async (itemId, quantity) => {
     try {
+      if (isDemoMode) {
+        const cart = updateDemoCartItem(itemId, quantity);
+        setValue((prev) => ({ ...prev, cart }));
+        return { successful: true };
+      }
+
       const res = await fetch(`${endPoints.cart()}/item/${itemId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
@@ -187,6 +253,12 @@ export const MainProvider = ({ children }) => {
 
   const removeFromCart = async (itemId) => {
     try {
+      if (isDemoMode) {
+        const cart = removeDemoCartItem(itemId);
+        setValue((prev) => ({ ...prev, cart }));
+        return { successful: true };
+      }
+
       const res = await fetch(`${endPoints.cart()}/item/${itemId}`, {
         method: 'DELETE',
         credentials: 'include',
@@ -205,6 +277,12 @@ export const MainProvider = ({ children }) => {
 
   const clearCart = async () => {
     try {
+      if (isDemoMode) {
+        const cart = clearDemoCart();
+        setValue((prev) => ({ ...prev, cart }));
+        return { successful: true };
+      }
+
       const res = await fetch(endPoints.cart(), {
         method: 'DELETE',
         credentials: 'include',

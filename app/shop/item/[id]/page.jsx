@@ -7,6 +7,7 @@ import { useMain } from "@/context/MainContext";
 import { useUser } from "@/context/UserContext";
 import { endPoints, BASE_API_URL } from "@/config";
 import { toast } from "react-hot-toast";
+import { fetchDemoProduct, getDemoImageSrc, isDemoMode } from "@/lib/demoMode";
 
 export default function ItemPage() {
   const { id } = useParams();
@@ -96,6 +97,16 @@ export default function ItemPage() {
   const fetchProduct = async () => {
     try {
       setLoading(true);
+      if (isDemoMode) {
+        const demoProduct = await fetchDemoProduct(id);
+        if (demoProduct) {
+          setProduct(demoProduct);
+        } else {
+          setErrorCode(404);
+        }
+        return;
+      }
+
       const res = await fetch(endPoints.getProduct(id));
       const json = await res.json();
 
@@ -189,7 +200,7 @@ export default function ItemPage() {
         {/* Image */}
         <div className="bg-white rounded-xl shadow-md overflow-hidden flex items-center justify-center min-h-[400px]">
           <img
-            src={product.images && product.images.length > 0 ? `${BASE_API_URL}${product.images[0]}` : "https://placehold.co/600x600?text=" + product.title}
+            src={product.images && product.images.length > 0 ? (isDemoMode ? getDemoImageSrc(product.images) : `${BASE_API_URL}${product.images[0]}`) : "https://placehold.co/600x600?text=" + product.title}
             alt={product.title}
             className="w-full h-full object-cover"
             onError={(e) => { e.target.src = "https://placehold.co/600x600?text=" + product.title }}

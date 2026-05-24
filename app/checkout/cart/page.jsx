@@ -4,6 +4,7 @@ import { Trash2, Plus, Minus, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useMain } from "@/context/MainContext";
 import { BASE_API_URL } from "@/config";
+import { getDemoImageSrc, isDemoMode } from "@/lib/demoMode";
 
 export default function CartPage() {
   const { cart, updateCartQty, removeFromCart, cartLoading } = useMain();
@@ -53,7 +54,7 @@ export default function CartPage() {
                     <div className="flex items-center gap-4 w-full sm:w-auto">
                       <div className="w-24 h-24 shrink-0 bg-gray-100 rounded-lg overflow-hidden border">
                         <img
-                          src={item.image ? `${BASE_API_URL}${item.image}` : "https://placehold.co/100x100?text=No+Img"}
+                          src={item.image ? (isDemoMode ? getDemoImageSrc(item.image) : `${BASE_API_URL}${item.image}`) : "https://placehold.co/100x100?text=No+Img"}
                           alt={item.title}
                           className="w-full h-full object-cover"
                           onError={(e) => { e.target.src = "https://placehold.co/100x100?text=Error" }}

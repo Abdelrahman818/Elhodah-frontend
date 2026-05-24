@@ -6,6 +6,7 @@ import { Trash2, Heart } from "lucide-react";
 import { useMain } from "@/context/MainContext";
 import { useUser } from "@/context/UserContext";
 import Link from "next/link";
+import { getDemoImageSrc, isDemoMode } from "@/lib/demoMode";
 
 export default function FavPage() {
   const router = useRouter();
@@ -82,7 +83,7 @@ export default function FavPage() {
                     <img
                       src={
                         product.images && product.images[0]
-                          ? `http://localhost:8080/${product.images[0]}`
+                          ? (isDemoMode ? getDemoImageSrc(product.images) : `http://localhost:8080/${product.images[0]}`)
                           : "/logo.png"
                       }
                       alt={product.title || "Product"}

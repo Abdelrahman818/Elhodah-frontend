@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": "demo-user",
+      "name": "Demo Customer",
+      "email": "demo@elhoda.test",
+      "password": "demo",
+      "phone": "01012345678",
+      "address": "12 El Hoda Street",
+      "city": "Cairo",
+      "isAdmin": false
+    },
+    {
+      "id": "demo-admin",
+      "name": "Demo Admin",
+      "email": "admin@elhoda.test",
+      "password": "admin",
+      "phone": "01098765432",
+      "address": "Admin Office",
+      "city": "Giza",
+      "isAdmin": true
+    }
+  ]
+}
